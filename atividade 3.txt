@@ -1,0 +1,42 @@
+create database biblioteca
+create table livro(
+id_livro smallint primary key identity (100,1),
+nome_livro varchar (50) not null,
+ISBN varchar(30) not null ,
+id_autor smallint not null,
+data_pub datetime not null,
+preco_livro money not null,
+
+);
+create table autores (
+id_autor smallint primary key,
+nome_autor varchar (50) not null,
+sobrenome_autror varchar (60) not null,
+);
+create table editora (
+id_editora smallint primary key identity,
+nome_editora varchar (50) not null,
+);
+sp_help autores 
+create table teste_identidade (
+id_teste smallint primary key identity,
+valor smallint not null,
+);
+insert into teste_identidade (valor)values (10)
+insert into teste_identidade (valor)values (20)
+insert into teste_identidade (valor)values (30)
+insert into teste_identidade (valor) values (40)
+alter table autor 
+add primary key (id_autor);para criar a chava primaria na tabela 
+select*from teste_identidade
+alter table livro
+drop column id_autor
+alter table livro
+add id_autor smallint not null
+constraint fk_id_autor foreign key(id_autor)
+references autores
+alter table livro
+add id_editora smallint not null
+constraint fk_id_editora foreign key(id_editora)
+references editoras
+drop table teste_identidade

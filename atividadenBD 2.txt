@@ -1,0 +1,58 @@
+create database matricula
+ create table aluno (
+ id_pessoa bigint not null,
+ matricula  varchar (10) not null,
+ ano_inicio smallint not null,
+ semestre_incio smallint not null,
+primary key (id_pessoa)
+ )
+ create table professor (
+ matricula varchar (10)not null,
+ id_pessoa varchar (128) not null,
+ titulacao_maximo date not null,
+primary key (id)
+ )
+
+ create table mensalidade(
+ id bigint not null,
+ data_nacimento date,
+ valor numeric (15,2),
+ referecia varchar,
+ data_pagamento date,
+ Id_institucao bigint,
+ id_aluno bigint,
+primary key(id)
+ )
+ create table turma (
+ id bigint not null,
+ descricao varchar (256) not null,
+ numero smallint not null,
+ ano varchar (4)not null,
+ semestre smallint not null,
+id_instituicao bigint not null,
+primary key
+)
+create table professor_turma (
+id_pessoa bigint not null,
+id_turma bigint not null,
+ primary key 
+ )
+ alter table aluno
+ add constraint aluno_1_fk foreign key (id_pessoa) references professor (id)on delete cascade on update cascade;
+ 
+
+
+ 
+Para gerar a coluna basta fazer o seguinte:
+Primeiro criar uma coluna com a auto incrementação:
+
+alter table TABELA
+add id [bigint] IDENTITY(1,1)
+Depois transformar essa coluna em uma chave primaria.
+
+ALTER TABLE TABELAalu
+ADD CONSTRAINT pk_NOME PRIMARY KEY (id)
+
+insert into pessoa (id,nome,data_nacimento,cpf)
+values (1, marcos miguel, 19977-0831)
+
